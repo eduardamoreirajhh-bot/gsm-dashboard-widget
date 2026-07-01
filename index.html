@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GSM Dashboard</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
+background:transparent;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+height:100vh;
+
+font-family:Georgia,serif;
+
+color:white;
+
+}
+
+.widget{
+
+width:100%;
+max-width:900px;
+
+text-align:center;
+
+padding:40px;
+
+}
+
+.label{
+
+font-size:13px;
+
+letter-spacing:4px;
+
+text-transform:uppercase;
+
+color:#D4AF37;
+
+margin-bottom:30px;
+
+opacity:.8;
+
+}
+
+#greeting{
+
+font-size:44px;
+
+font-weight:bold;
+
+line-height:1.2;
+
+}
+
+#message{
+
+margin-top:12px;
+
+font-size:20px;
+
+font-style:italic;
+
+color:#D4AF37;
+
+opacity:.95;
+
+}
+
+#time{
+
+margin-top:45px;
+
+font-size:92px;
+
+font-weight:bold;
+
+color:#D4AF37;
+
+text-shadow:0 0 18px rgba(212,175,55,.25);
+
+}
+
+.date{
+
+margin-top:12px;
+
+font-size:30px;
+
+font-weight:bold;
+
+}
+
+.fullDate{
+
+font-size:19px;
+
+margin-top:8px;
+
+opacity:.9;
+
+}
+
+.weather{
+
+margin-top:35px;
+
+font-size:24px;
+
+color:#D4AF37;
+
+}
+
+.line{
+
+width:220px;
+
+height:1px;
+
+background:#D4AF37;
+
+margin:35px auto;
+
+opacity:.4;
+
+}
+
+.quote{
+
+font-size:20px;
+
+font-style:italic;
+
+line-height:1.5;
+
+opacity:.9;
+
+}
+
+.stats{
+
+display:flex;
+
+justify-content:center;
+
+gap:40px;
+
+margin-top:45px;
+
+flex-wrap:wrap;
+
+}
+
+.card{
+
+border:1px solid rgba(212,175,55,.18);
+
+border-radius:18px;
+
+padding:18px 28px;
+
+background:rgba(255,255,255,.03);
+
+backdrop-filter:blur(12px);
+
+min-width:180px;
+
+}
+
+.cardTitle{
+
+font-size:13px;
+
+letter-spacing:2px;
+
+text-transform:uppercase;
+
+color:#D4AF37;
+
+}
+
+.cardValue{
+
+font-size:30px;
+
+font-weight:bold;
+
+margin-top:10px;
+
+}
+@media(max-width:700px){
+
+#greeting{
+font-size:34px;
+}
+
+#message{
+font-size:17px;
+}
+
+#time{
+font-size:62px;
+}
+
+.date{
+font-size:24px;
+}
+
+.weather{
+font-size:20px;
+}
+
+.card{
+min-width:140px;
+padding:16px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="widget">
+
+<div class="label">
+GSM CONSTRUCTION DASHBOARD
+</div>
+
+<div id="greeting"></div>
+
+<div id="message"></div>
+
+<div id="time"></div>
+
+<div class="date" id="day"></div>
+
+<div class="fullDate" id="date"></div>
+
+<div class="weather" id="weather">
+Loading weather...
+</div>
+
+<div class="line"></div>
+
+<div class="quote">
+Building Excellence.<br>
+Growing Every Project.
+</div>
+
+<div class="stats">
+
+<div class="card">
+<div class="cardTitle">
+Projects
+</div>
+<div class="cardValue">
+08
+</div>
+</div>
+
+<div class="card">
+<div class="cardTitle">
+Estimates
+</div>
+<div class="cardValue">
+03
+</div>
+</div>
+
+<div class="card">
+<div class="cardTitle">
+Reviews
+</div>
+<div class="cardValue">
+★★★★★
+</div>
+</div>
+
+</div>
+
+<script>
+function updateWidget(){
+
+const now = new Date();
+const hour = now.getHours();
+
+let greeting = "🌙 Good Evening, Eduarda";
+let message = "Great work today. Tomorrow we build again.";
+
+if(hour >= 5 && hour < 12){
+    greeting = "☀️ Good Morning, Eduarda";
+    message = "Let's build something great today.";
+}
+else if(hour >= 12 && hour < 18){
+    greeting = "🌤️ Good Afternoon, Eduarda";
+    message = "Keep the projects moving.";
+}
+
+document.getElementById("greeting").textContent = greeting;
+document.getElementById("message").textContent = message;
+
+document.getElementById("time").textContent =
+now.toLocaleTimeString("en-US",{
+hour:"2-digit",
+minute:"2-digit"
+});
+
+document.getElementById("day").textContent =
+now.toLocaleDateString("en-US",{
+weekday:"long"
+});
+
+document.getElementById("date").textContent =
+now.toLocaleDateString("en-US",{
+month:"long",
+day:"numeric",
+year:"numeric"
+});
+
+// Clima temporário
+document.getElementById("weather").textContent =
+"📍 Taunton, MA • Weather coming soon";
+
+}
+
+updateWidget();
+setInterval(updateWidget,1000);
+
+</script>
+
+</body>
+</html>  
