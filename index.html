@@ -32,6 +32,26 @@ padding:30px;
 text-align:center;
 background:#191919;
 color:#d4af37;
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+.columns{
+display:flex;
+flex-direction:row;
+align-items:flex-start;
+gap:80px;
+}
+
+.col-left,
+.col-right{
+text-align:left;
+}
+
+.col-right{
+border-left:2px solid #d4af37;
+padding-left:40px;
 }
 
 #greeting{
@@ -51,7 +71,6 @@ color:#d4af37;
 #time{
 font-size:64px;
 font-weight:bold;
-margin-bottom:18px;
 }
 
 #date{
@@ -63,20 +82,20 @@ margin-bottom:22px;
 #weather{
 font-size:18px;
 color:white;
-margin-bottom:25px;
 }
 
 .line{
 width:180px;
 height:2px;
 background:#d4af37;
-margin:0 auto 20px;
+margin:30px auto 20px;
 }
 
 .quote{
 font-size:18px;
 font-style:italic;
 color:#d4af37;
+text-align:center;
 }
 </style>
 
@@ -86,15 +105,20 @@ color:#d4af37;
 
 <div class="widget">
 
+<div class="columns">
+
+<div class="col-left">
 <div id="greeting"></div>
-
 <div id="message"></div>
-
 <div id="time"></div>
+</div>
 
+<div class="col-right">
 <div id="date"></div>
-
 <div id="weather">📍 Taunton, MA</div>
+</div>
+
+</div>
 
 <div class="line"></div>
 
